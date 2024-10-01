@@ -1,0 +1,12 @@
+Flask
+Flask-SQLAlchemy
+Flask-Login
+Flask-OAuthlib
+Flask-JWT-Extended
+python-dotenv
+Flask-Migrate
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+requests-oauthlib
+PyJWT
