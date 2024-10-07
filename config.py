@@ -1,3 +1,5 @@
+# app/config.py
+
 import os
 from dotenv import load_dotenv
 
@@ -16,3 +18,5 @@ class Config:
     GOOGLE_AUTH_PROVIDER_X509_CERT_URL = os.getenv(
         "GOOGLE_AUTH_PROVIDER_X509_CERT_URL")
     GOOGLE_REDIRECT_URI_1 = os.getenv("GOOGLE_REDIRECT_URI_1")
+    RAVEN_PORT = int(os.getenv("RAVEN_PORT", 8080))
+    GOOGLE_USER_INFO_ENDPOINT = os.getenv("GOOGLE_USER_INFO_ENDPOINT")
