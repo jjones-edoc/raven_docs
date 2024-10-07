@@ -13,12 +13,6 @@ import requests
 
 auth_bp = Blueprint('auth', __name__)
 
-REDIRECT_URI = "http://localhost:5000/auth/callback"
-
-AUTHORIZATION_ENDPOINT = "https://accounts.google.com/o/oauth2/auth"
-TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
-USER_INFO_ENDPOINT = "https://www.googleapis.com/oauth2/v1/userinfo"
-
 
 def login_required(f):
     @wraps(f)
@@ -45,6 +39,8 @@ def login():
     logging.debug(f"Generated state: {state}")
 
     GOOGLE_CLIENT_ID = current_app.config['GOOGLE_CLIENT_ID']
+    REDIRECT_URI = current_app.config['GOOGLE_REDIRECT_URI_1']
+    AUTHORIZATION_ENDPOINT = current_app.config['GOOGLE_AUTH_URI']
 
     params = {
         'client_id': GOOGLE_CLIENT_ID,
@@ -75,6 +71,9 @@ def callback():
 
     GOOGLE_CLIENT_ID = current_app.config['GOOGLE_CLIENT_ID']
     GOOGLE_CLIENT_SECRET = current_app.config['GOOGLE_CLIENT_SECRET']
+    REDIRECT_URI = current_app.config['GOOGLE_REDIRECT_URI_1']
+    TOKEN_ENDPOINT = current_app.config['GOOGLE_TOKEN_URI']
+    USER_INFO_ENDPOINT = current_app.config['GOOGLE_USER_INFO_ENDPOINT']
 
     data = {
         'code': code,
